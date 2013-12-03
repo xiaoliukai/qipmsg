@@ -1,4 +1,7 @@
 qipmsg
 ======
-sadf
-从网上下的一个开源的飞鸽项目，学习用。
+This is personal porject for my QT study and training.
+So it is very poor and may be can't building
+It's base on qipmsg. If you  want kown more about qipmsg
+Visit : https://code.google.com/p/qipmsg/
+
