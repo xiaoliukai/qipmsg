@@ -1,10 +1,6 @@
 qipmsg
 qipmsg.pro.user
 qrc_icons.cpp
-<<<<<<< HEAD
 .moc
-=======
 .obj/
-.moc/
 Makefile
->>>>>>> origin/master
