@@ -1,4 +1,6 @@
-Malefile
+Makefile
 *.o
 mytest
 mytest.pro.user
+moc_mainwindow.cpp
+ui_mainwindow.h
