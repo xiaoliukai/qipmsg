@@ -1,9 +1,13 @@
 #include <QtGui/QApplication>
 #include <QtCore>
 #include <QtGui>
+#include <unistd.h>
 
 #include "helper.h"
 #include "mainwindow.h"
+#include "global.h"
+#include "qipmsg.h"
+#include "msgthread.h"
 
 static void createHomeDirectory();
 
@@ -17,12 +21,32 @@ int main(int argc, char *argv[])
     Helper::setIniPath(iniPath);
     Helper::setAppPath(app.applicationDirPath());
 
-    QString fileName = Helper::appHomePath() + "/mipmsg_internal.log";
+    QString fileName   = Helper::appHomePath() + "/mipmsg_internal.log";
     Helper::setInternalLogFileName(fileName);
 
+    //Set seed value
+    qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+    // Set init package number as random
+    Helper::setPacketNo(qrand()%1024);
 
-    MainWindow w;
-    w.show();
+    //language can be selected
+
+    //Make qipmsg class,initialize global variable
+
+    QIpMsg *qipmsg = new QIpMsg;
+
+    //Check tcp server
+
+    //Run a global method I don't know what it used for
+    Global::msgThread->start();
+    //Global::msgThread->start();
+
+    //Broadcast on my network,I'm online!
+
+
+    qDebug() << "myc:" << QTime(0,0,0).secsTo(QTime::currentTime());
+
+    app.setQuitOnLastWindowClosed(false);
     
     return app.exec();
 }
