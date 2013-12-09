@@ -3,10 +3,54 @@
 
 #include <QHostAddress>
 
+#include "owner.h"
+
 class MsgBase
 {
 public:
-    MsgBase();
+    enum States{
+        NotSend = 0, Sending = 1, SendOK = 2, SendFail = 3, SendAckOk = 4
+    };
+    MsgBase(){}
+
+    // Create receive message from receive packet
+    MsgBase(QString packet, QHostAddress address, quint16 port);
+
+    // Create send message
+    MsgBase(QHostAddress address, quint16 prot, QString additionalInfo,
+         QString extendedInfo, quint32 flags);
+
+    virtual ~MsgBase();
+
+    virtual MsgBase* clone() const{ new MsgBase(*this); }
+
+    virtual QString packet() const { return m_packet; }
+
+    virtual QString packetNoString() const { return m_packetNoString;}
+
+    virtual quint32 flags() const { return m_flags; }
+
+    virtual quint16 port() const { return m_port; }
+
+    virtual const Owner& owner() const { return m_owner; }
+
+    virtual QString ip() const { return m_ipAddress.toString(); }
+
+    virtual QHostAddress
+
+private:
+    void parsePacket();
+    void parseAdditionalInfo();
+    void constructPacket();
+
+    Owner m_owner;
+    QString m_packet;
+    QString m_extendInfo;
+    QString m_additionalInfo;
+    QString m_packetNoString;
+    quint32 m_flags;
+    QHostAddress m_ipAddress;
+    quint16 m_port;
 };
 
 #endif // MSGBASE_H

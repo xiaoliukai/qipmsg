@@ -6,7 +6,7 @@
 class Owner
 {
 public:
-    Owner();
+    Owner(){}
     Owner(QString packet, QHostAddress address, quint16 port);
 #if 0
     Owner(const Owner &rhs);
