@@ -1,0 +1,6 @@
+#
+.moc/
+.obj/
+sendmsg
+sendmsg.pro.user
+Makefile
