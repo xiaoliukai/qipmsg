@@ -13,10 +13,32 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     helper.cpp \
-    lockfile.cpp
+    lockfile.cpp \
+    qipmsg.cpp \
+    global.cpp \
+    msgthread.cpp \
+    sendfilemanager.cpp \
+    preferences.cpp \
+    transfercodec.cpp \
+    fileserver.cpp \
+    soundthread.cpp \
+    usermanager.cpp \
+    windowmanager.cpp \
+    systray.cpp
 
 HEADERS  += mainwindow.h \
     helper.h \
-    lockfile.h
+    lockfile.h \
+    qipmsg.h \
+    global.h \
+    msgthread.h \
+    sendfilemanager.h \
+    preferences.h \
+    transfercodec.h \
+    fileserver.h \
+    soundthread.h \
+    usermanager.h \
+    windowmanager.h \
+    systray.h
 
 FORMS    += mainwindow.ui
