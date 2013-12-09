@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     //Broadcast on my network,I'm online!
 
 
-    qDebug() << "myc:" << QTime(0,0,0).secsTo(QTime::currentTime());
+    //qDebug() << "myc:" << QTime(0,0,0).secsTo(QTime::currentTime());
 
     app.setQuitOnLastWindowClosed(false);
     

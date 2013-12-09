@@ -8,10 +8,10 @@
 #include "systray.h"
 #include "windowmanager.h"
 #include "fileserver.h"
-//#include "constants.h"
+#include "constants.h"
 //#include "send_file_manager.h"
 #include "soundthread.h"
-using namespace Global;
+
 SendFileManager *Global::sendFileManager = 0;
 QSettings *Global::settings = 0;
 UserManager *Global::userManager = 0;
@@ -26,12 +26,11 @@ SoundThread *Global::soundThread = 0;
 
 static void createIconSet();
 
-
-
+using namespace Global;
 
 void Global::globalInit(QString path)
 {
-    qDebug("Global::globalInit");
+    //qDebug("Global::globalInit");
 
     createIconSet();
 
@@ -39,13 +38,13 @@ void Global::globalInit(QString path)
 
     sendFileManager = new SendFileManager;
 
-//    if (path.isEmpty()) {
-//        settings = new QSettings(QSettings::IniFormat, QSettings::UserScope,
-//                                 QString(COMPANY), QString(PROGRAM));
-//    } else {
-//        QString fileName = path + "/qipmsg.ini";
-//        settings = new QSettings(fileName, QSettings::IniFormat);
-//    }
+    if (path.isEmpty()) {
+        settings = new QSettings(QSettings::IniFormat, QSettings::UserScope,
+                                 QString(COMPANY), QString(PROGRAM));
+    } else {
+        QString fileName = path + "/qipmsg.ini";
+        settings = new QSettings(fileName, QSettings::IniFormat);
+    }
 
     preferences = new Preferences;
 

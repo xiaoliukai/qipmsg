@@ -7,6 +7,6 @@
 
 QIpMsg::QIpMsg()
 {
-    qDebug() << "QIpMsg class init method.";
+    //qDebug() << "QIpMsg class init method.";
     Global::globalInit(Helper::iniPath());
 }

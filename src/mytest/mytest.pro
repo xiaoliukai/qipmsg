@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 TARGET = mytest
 TEMPLATE = app
@@ -24,7 +24,11 @@ SOURCES += main.cpp\
     soundthread.cpp \
     usermanager.cpp \
     windowmanager.cpp \
-    systray.cpp
+    systray.cpp \
+    msgserver.cpp \
+    msg.cpp \
+    msgbase.cpp \
+    owner.cpp
 
 HEADERS  += mainwindow.h \
     helper.h \
@@ -39,6 +43,12 @@ HEADERS  += mainwindow.h \
     soundthread.h \
     usermanager.h \
     windowmanager.h \
-    systray.h
+    systray.h \
+    msgserver.h \
+    msg.h \
+    constants.h \
+    ipmsg.h \
+    msgbase.h \
+    owner.h
 
 FORMS    += mainwindow.ui
