@@ -49,3 +49,38 @@ void MsgServer::start()
 {
     m_udpSocket.bind(QHostAddress::Any, IPMSG_DEFAULT_PORT);
 }
+
+void MsgServer::readPacket()
+{
+    qDebug() << "MsgServer::readPacket";
+
+    while (m_udpSocket.hasPendingDatagrams()){
+        QHostAddress senderIp;
+        quint16 senderPort;
+        QByteArray datagram;
+        datagram.resize(m_udpSocket.pendingDatagramSize());
+        if (m_udpSocket.readDatagram(datagram.data(), datagram.size(),
+                                        &senderIp, &senderPort) == -1 ){
+            continue;
+        }
+
+        if (!isSupportedCommand(datagram)) {
+            continue;
+        }
+
+//        QString packet
+//                = Global::transferCodec->codec()->toUnicode(datagram);
+        QString packet = QString(datagram);
+        RecvMsg recvMsg(packet, senderIp, senderPort);
+
+        processRecvMsg(Msg(recvMsg));
+    }
+}
+
+void MsgServer::processRecvMsg(Msg msg)
+{
+    qDebug() << "MsgServer::processRecvMsg";
+
+    //switch ()
+
+}

@@ -28,7 +28,9 @@ SOURCES += main.cpp\
     msgserver.cpp \
     msg.cpp \
     msgbase.cpp \
-    owner.cpp
+    owner.cpp \
+    recvmsg.cpp \
+    sendmsg.cpp
 
 HEADERS  += mainwindow.h \
     helper.h \
@@ -49,6 +51,8 @@ HEADERS  += mainwindow.h \
     constants.h \
     ipmsg.h \
     msgbase.h \
-    owner.h
+    owner.h \
+    recvmsg.h \
+    sendmsg.h
 
 FORMS    += mainwindow.ui
