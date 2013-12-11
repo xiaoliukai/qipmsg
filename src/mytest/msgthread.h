@@ -12,12 +12,27 @@ class MsgServer;
 class MsgThread : public QThread
 {
     Q_OBJECT
+
 public:
+    friend class MsgServer;
+    MsgThread(QObject *parent = 0) : QThread(parent) {}
+    ~MsgThread();
+
     explicit MsgThread(QObject *parent = 0);
     
     virtual void run();
 
+    void addSendMsg(Msg msg);
+    void addSendMsgNotLock(Msg msg);
+    void removeSendMsg(QString packetNo);
+    void removeSendMsgNotLock(QString packetNo);
+
+private slots:
+    void handleError(QAbstractSocket::SocketAccessError errorCode, QString s);
+
 signals:
+    void newMsg(Msg msg);
+    void newUserMsg(Msg msg);
     
 public slots:
 

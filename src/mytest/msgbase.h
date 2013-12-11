@@ -35,8 +35,17 @@ public:
     virtual const Owner& owner() const { return m_owner; }
 
     virtual QString ip() const { return m_ipAddress.toString(); }
+    virtual QHostAddress ipAddress() const { return m_ipAddress; }
 
-    virtual QHostAddress
+    virtual QString adduitionalInfo() const { return m_additionalInfo;}
+    virtual QString extendedInfo() const { return m_extendInfo; }
+
+    // We set all these methods to empty
+    // XXX NOTE: only send msg use these functions
+    virtual void setState(States state) {}
+    virtual MsgBase::States state() const {}
+    virtual int sendTimes() const {}
+    virtual void incrementSendTimes() {}
 
 private:
     void parsePacket();

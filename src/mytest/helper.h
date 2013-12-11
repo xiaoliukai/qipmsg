@@ -1,6 +1,7 @@
 #ifndef HELPER_H
 #define HELPER_H
 
+#include <QRegExp>
 #include <QFile>
 
 class Helper
@@ -9,13 +10,37 @@ public:
     Helper();
 
     static void setAppPath(QString path);
+    static QString appPath();
+
     static QString appHomePath();
+
+    static QString lockFile();
 
     static void setIniPath(QString path);
     static QString iniPath();
 
-    static void setInternalLogFileName(QString filePath);
+    static QString translationPath();
+    static QString qtTranslationPath();
+
+    static QString soundPath();
+    static QString iconPath();
+
+    static QString loginName();
+    static QString hostname();
+
+    static QString getEnvironmentVariable(QRegExp regExp);
+
     static void setPacketNo(qint64 n);
+    static QString packetNoString();
+    static qint64 packetNo();
+
+    static void setInternalLogFileName(QString filePath);
+    static void writeInternalLog(QString line);
+
+    static QString openUrlProgram();
+
+    static QString fileCountString(int fileCount);
+    static QString sizeStringUnit(double size = 0.0, QString sep = "");
 
 private:
 
