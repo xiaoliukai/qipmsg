@@ -94,6 +94,19 @@ void UserManager::addUser(const Owner &owner, int row)
     updateUser(owner, row);
 }
 
+void UserManager::broadcastEXit() const
+{
+    qDebug("UserManager::broadcastExit");
+
+    quint32 flags = 0;
+    flags |=  IPMSG_BR_EXIT | QIPMSG_CAPACITY;
+
+    SendMsg sendMsg(QHostAddress::NULL, 0 /* prot */,
+                    exitMessage(), "" /* extendedInfo */, flags);
+
+    Global::msgThread->
+}
+
 bool UserManager::contains(QString ip) const
 {
     for (int row = 0; row < m_model->rowCount(); ++row) {

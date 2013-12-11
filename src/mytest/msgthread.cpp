@@ -8,6 +8,9 @@
 #include "usermanager.h"
 
 #include <QtCore>
+#include <QTimer>
+#include <QMessageBox>
+
 
 
 MsgThread::MsgThread(QObject *parent) :
