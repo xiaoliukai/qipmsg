@@ -18,7 +18,7 @@ public:
     MsgThread(QObject *parent = 0) : QThread(parent) {}
     ~MsgThread();
 
-    explicit MsgThread(QObject *parent = 0);
+   // explicit MsgThread(QObject *parent = 0);
     
     virtual void run();
 
@@ -28,7 +28,7 @@ public:
     void removeSendMsgNotLock(QString packetNo);
 
 private slots:
-    void handleError(QAbstractSocket::SocketAccessError errorCode, QString s);
+    void handleError(QAbstractSocket::SocketError errorCode, QString s);
 
 signals:
     void newMsg(Msg msg);

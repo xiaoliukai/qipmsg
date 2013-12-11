@@ -94,6 +94,19 @@ void UserManager::addUser(const Owner &owner, int row)
     updateUser(owner, row);
 }
 
+QString UserManager::entryMessage() const
+{
+    return QString("%1%2%3%4").arg(m_ourself.name())
+        .arg(QChar('\0'))
+        .arg(m_ourself.group())
+        .arg(QChar('\0'));
+}
+
+QString UserManager::exitMessage() const
+{
+    return entryMessage();
+}
+
 void UserManager::broadcastEXit() const
 {
     qDebug("UserManager::broadcastExit");
@@ -101,10 +114,10 @@ void UserManager::broadcastEXit() const
     quint32 flags = 0;
     flags |=  IPMSG_BR_EXIT | QIPMSG_CAPACITY;
 
-    SendMsg sendMsg(QHostAddress::NULL, 0 /* prot */,
+    SendMsg sendMsg(QHostAddress::Null, 0 /* prot */,
                     exitMessage(), "" /* extendedInfo */, flags);
 
-    Global::msgThread->
+   // Global::msgThread->
 }
 
 bool UserManager::contains(QString ip) const
@@ -115,4 +128,21 @@ bool UserManager::contains(QString ip) const
         }
     }
     return false;
+}
+
+QString UserManager::ip(int row) const
+{
+    return m_model->data(m_model->index(row, USER_VIEW_IP_COLUMN))
+        .toString();
+}
+
+int UserManager::ipToRow(QString ip) const
+{
+    for (int row = 0; row < m_model->rowCount(); ++row) {
+        if (this->ip(row) == ip) {
+            return row;
+        }
+    }
+
+    return -1;
 }

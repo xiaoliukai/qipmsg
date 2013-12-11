@@ -10,6 +10,7 @@ class QStandardItemModel;
 
 class UserManager : public QObject
 {
+    Q_OBJECT
 
 public:
 
@@ -39,7 +40,7 @@ signals:
 
 private slots:
     void newUserMsg(Msg msg);
-    void netExitMsg(Msg msg);
+    void newExitMsg(Msg msg);
 
 private:
     void createModel();

@@ -17,6 +17,19 @@
 #define MSG_NORMAL_FIELD_COUNT      6
 
 #define COMMAND_SEPERATOR       ':'
+#define EXTEND_INFO_SEPERATOR   '\0'
+
+
+#define USER_VIEW_NAME_COLUMN              0
+#define USER_VIEW_GROUP_COLUMN             1
+#define USER_VIEW_HOST_COLUMN              2
+#define USER_VIEW_IP_COLUMN                3
+#define USER_VIEW_LOGIN_NAME_COLUMN        4
+#define USER_VIEW_DISPLAY_LEVEL_COLUMN     5
+
+// Support file attachment and encrypt
+// #define QIPMSG_CAPACITY         IPMSG_FILEATTACHOPT | IPMSG_ENCRYPTOPT
+#define QIPMSG_CAPACITY         IPMSG_FILEATTACHOPT
 
 
 #endif // CONSTANTS_H

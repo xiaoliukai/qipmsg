@@ -2,6 +2,10 @@
 #include "helper.h"
 #include "global.h"
 #include "constants.h"
+#include "usermanager.h"
+
+#include <QHostAddress>
+#include <QStringList>
 
 MsgBase::MsgBase(QString packet, QHostAddress address, quint16 port)
     : m_owner(packet, address, port), m_packet(packet),
@@ -49,7 +53,7 @@ void MsgBase::parsePacket()
         return;
     }
 
-    m_extendedInfo = m_packet.section(QChar(EXTEND_INFO_SEPERATOR), 1, 1);
+    m_extendInfo = m_packet.section(QChar(EXTEND_INFO_SEPERATOR), 1, 1);
     parseAdditionalInfo();
 
     m_packetNoString = list.at(MSG_PACKET_NO_POS);

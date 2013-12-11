@@ -3,8 +3,6 @@
 
 #include "msgbase.h"
 
-
-
 // Use counted handle class for the msg_base hierarchy
 class Msg
 {

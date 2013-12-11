@@ -41,8 +41,10 @@ public:
 
     static QString fileCountString(int fileCount);
     static QString sizeStringUnit(double size = 0.0, QString sep = "");
+    static QString secondStringUnit(int second);
 
 private:
+    static void openInternalLogFile();
 
     static QString m_iniPath;
     static QString m_appPath;

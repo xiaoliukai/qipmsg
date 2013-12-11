@@ -1,5 +1,6 @@
 #include "owner.h"
 #include "constants.h"
+#include <QStringList>
 
 Owner::Owner(QString packet, QHostAddress address, quint16 port)
     : m_ipAddress(address), m_port(port)
