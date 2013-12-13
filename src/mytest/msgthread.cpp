@@ -24,3 +24,19 @@ void MsgThread::run()
     exec();
 
 }
+
+void MsgThread::handleError(QAbstractSocket::SocketError errorCode, QString s)
+{
+    qDebug() << "MsgThread::handleError";
+
+    QString errorString(QObject::tr("udp server error"));
+
+    QMessageBox::critical(0, QObject::tr("QIpMsg"),
+                          errorString + ":\n" + s + ".");
+
+    qDebug() << "MsgThread::handleError:" << s;
+
+    if (errorCode == QAbstractSocket::AddressInUseError) {
+        ::exit(-1);
+    }
+}

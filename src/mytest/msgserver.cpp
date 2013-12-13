@@ -64,9 +64,9 @@ void MsgServer::readPacket()
             continue;
         }
 
-        if (!isSupportedCommand(datagram)) {
-            continue;
-        }
+//        if (!isSupportedCommand(datagram)) {
+//            continue;
+//        }
 
 //        QString packet
 //                = Global::transferCodec->codec()->toUnicode(datagram);

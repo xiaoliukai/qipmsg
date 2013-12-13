@@ -7,7 +7,7 @@
 class Helper
 {
 public:
-    Helper();
+    Helper(){}
 
     static void setAppPath(QString path);
     static QString appPath();

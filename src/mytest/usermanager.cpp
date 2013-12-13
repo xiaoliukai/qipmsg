@@ -59,7 +59,7 @@ void UserManager::newUserMsg(Msg msg)
         m_model->insertRow(row);
         addUser(msg->owner(), row);
 
-        emit userCountUpdated(m_model->rowCount());
+        //emit userCountUpdated(m_model->rowCount());
     }
 }
 
@@ -69,7 +69,7 @@ void UserManager::newExitMsg(Msg msg)
     if ((row = ipToRow(msg->ip())) != -1){
         m_model->removeRow(row);
 
-        emit userCountUpdated(m_model->rowCount());
+       // emit userCountUpdated(m_model->rowCount());
     }
 }
 
@@ -94,6 +94,19 @@ void UserManager::addUser(const Owner &owner, int row)
     updateUser(owner, row);
 }
 
+void UserManager::broadcastExit() const
+{
+    qDebug("UserManager::broadcastExit");
+
+    quint32 flags = 0;
+    flags |= IPMSG_BR_EXIT | QIPMSG_CAPACITY;
+
+    SendMsg sendMsg(QHostAddress::Null, 0/* port */,
+                    exitMessage(), ""/* extendedInfo */, flags);
+
+    //Global::msgThread->addSendMsg(Msg(sendMsg));
+}
+
 QString UserManager::entryMessage() const
 {
     return QString("%1%2%3%4").arg(m_ourself.name())
@@ -107,17 +120,17 @@ QString UserManager::exitMessage() const
     return entryMessage();
 }
 
-void UserManager::broadcastEXit() const
+void UserManager::broadcastEntry() const
 {
-    qDebug("UserManager::broadcastExit");
+    qDebug("UserManager::broadcastEntry");
 
     quint32 flags = 0;
-    flags |=  IPMSG_BR_EXIT | QIPMSG_CAPACITY;
+    flags |= IPMSG_BR_ENTRY | QIPMSG_CAPACITY;
 
-    SendMsg sendMsg(QHostAddress::Null, 0 /* prot */,
-                    exitMessage(), "" /* extendedInfo */, flags);
+    SendMsg sendMsg(QHostAddress::Null, 0/* port */,
+                    entryMessage(), ""/* extendedInfo */, flags);
 
-   // Global::msgThread->
+    Global::msgThread->addSendMsg(Msg(sendMsg));
 }
 
 bool UserManager::contains(QString ip) const
@@ -145,4 +158,29 @@ int UserManager::ipToRow(QString ip) const
     }
 
     return -1;
+}
+
+
+QString UserManager::name(int row) const
+{
+    return m_model->data(m_model->index(row, USER_VIEW_NAME_COLUMN))
+        .toString();
+}
+
+QString UserManager::group(int row) const
+{
+    return m_model->data(m_model->index(row, USER_VIEW_GROUP_COLUMN))
+        .toString();
+}
+
+QString UserManager::host(int row) const
+{
+    return m_model->data(m_model->index(row, USER_VIEW_HOST_COLUMN))
+        .toString();
+}
+
+QString UserManager::loginName(int row) const
+{
+    return m_model->data(m_model->index(row, USER_VIEW_LOGIN_NAME_COLUMN))
+        .toString();
 }

@@ -16,13 +16,13 @@ class MsgThread : public QThread
 public:
     friend class MsgServer;
     MsgThread(QObject *parent = 0) : QThread(parent) {}
-    ~MsgThread();
+    ~MsgThread(){}
 
    // explicit MsgThread(QObject *parent = 0);
     
     virtual void run();
 
-    void addSendMsg(Msg msg);
+    void addSendMsg(Msg msg){}
     void addSendMsgNotLock(Msg msg);
     void removeSendMsg(QString packetNo);
     void removeSendMsgNotLock(QString packetNo);

@@ -59,3 +59,25 @@ void MsgBase::parsePacket()
     m_packetNoString = list.at(MSG_PACKET_NO_POS);
     m_flags = list.at(MSG_FLAGS_POS).toUInt();
 }
+
+void MsgBase::parseAdditionalInfo()
+{
+    int cnt = 0;
+    int index = 0;
+    while (cnt < MSG_ADDITION_INFO_POS) {
+        int id = m_packet.indexOf(QChar(COMMAND_SEPERATOR), index);
+        if (index == -1) {
+            break;
+        }
+        ++cnt;
+        index = id + 1;
+    }
+
+    if (index == -1) {
+        m_additionalInfo = "";
+    } else {
+        QString s = m_packet.right(m_packet.size() - index);
+        m_additionalInfo = s.section(QChar(EXTEND_INFO_SEPERATOR), 0, 0);
+    }
+}
+

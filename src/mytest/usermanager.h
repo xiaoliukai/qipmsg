@@ -16,7 +16,7 @@ public:
 
     UserManager(QObject *parent = 0 );
 
-    void broadcastEXit() const;
+    void broadcastExit() const;
     void broadcastEntry() const;
 
     bool contains(QString ip) const;

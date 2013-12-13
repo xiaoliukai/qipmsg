@@ -31,5 +31,11 @@
 // #define QIPMSG_CAPACITY         IPMSG_FILEATTACHOPT | IPMSG_ENCRYPTOPT
 #define QIPMSG_CAPACITY         IPMSG_FILEATTACHOPT
 
+// Response file packet
+#define TRANSFER_FILE_HEADER_SIZE_LENGTH      4
+#define TRANSFER_FILE_FILE_SIZE_LENGTH        8
+
+#define ONE_KB     (1024.0)
+#define ONE_MB     (1024*1024.0)
 
 #endif // CONSTANTS_H
