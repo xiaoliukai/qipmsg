@@ -22,26 +22,26 @@ UserManager::UserManager(QObject *parent)
 
 void UserManager::updateOurself()
 {
-    if (Global::preferences->userName.isEmpty()) {
-        m_ourself.setName(Helper::loginName());
-    } else {
-        m_ourself.setName(Global::preferences->userName);
-    }
+//    if (Global::preferences->userName.isEmpty()) {
+//        m_ourself.setName(Helper::loginName());
+//    } else {
+//        m_ourself.setName(Global::preferences->userName);
+//    }
 
-    m_ourself.setGroup(Global::preferences->groupName);
-    m_ourself.setLoginName(Helper::loginName());
-    m_ourself.setHost(Helper::hostname());
-    m_ourself.setDisplayLevel(Global::preferences->displayLevel);
+//    m_ourself.setGroup(Global::preferences->groupName);
+//    m_ourself.setLoginName(Helper::loginName());
+//    m_ourself.setHost(Helper::hostname());
+//    m_ourself.setDisplayLevel(Global::preferences->displayLevel);
 }
 
 void UserManager::createModel()
 {
-    QStringList labels;
-    labels << tr("user") << tr("group") << tr("host") << tr("ip")
-        << tr("logname") << tr("display level");
+//    QStringList labels;
+//    labels << tr("user") << tr("group") << tr("host") << tr("ip")
+//        << tr("logname") << tr("display level");
 
-    m_model = new QStandardItemModel(0, labels.size(), this);
-    m_model->setHorizontalHeaderLabels(labels);
+//    m_model = new QStandardItemModel(0, labels.size(), this);
+//    m_model->setHorizontalHeaderLabels(labels);
 }
 
 void UserManager::newUserMsg(Msg msg)
