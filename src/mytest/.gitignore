@@ -2,5 +2,5 @@ Makefile
 *.o
 mytest
 mytest.pro.user
-moc_mainwindow.cpp
+moc_*
 ui_mainwindow.h

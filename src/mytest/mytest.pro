@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     msgbase.cpp \
     owner.cpp \
     recvmsg.cpp \
-    sendmsg.cpp
+    sendmsg.cpp \
+    setupwindow.cpp
 
 HEADERS  += mainwindow.h \
     helper.h \
@@ -53,6 +54,10 @@ HEADERS  += mainwindow.h \
     msgbase.h \
     owner.h \
     recvmsg.h \
-    sendmsg.h
+    sendmsg.h \
+    setupwindow.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    icons.qrc

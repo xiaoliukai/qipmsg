@@ -2,6 +2,7 @@
 #define GLOBAL_H
 
 #include <QString>
+#include <QMap>
 
 class QSettings;
 
@@ -27,7 +28,7 @@ namespace Global
     extern Preferences *preferences;
     extern TransferCodec *transferCodec;
     extern Systray *systray;
-    //extern QMap<QString, QIcon *> iconSet;
+    extern QMap<QString, QIcon *> iconSet;
     extern FileServer *fileServer;
 
     void globalInit(QString path);

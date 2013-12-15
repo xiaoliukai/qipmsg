@@ -19,7 +19,7 @@ WindowManager *Global::windowManager = 0;
 Preferences *Global::preferences = 0;
 TransferCodec *Global::transferCodec = 0;
 Systray *Global::systray = 0;
-//QMap<QString, QIcon *> Global::iconSet;
+QMap<QString, QIcon *> Global::iconSet;
 FileServer *Global::fileServer = 0;
 MsgThread *Global::msgThread = 0;
 SoundThread *Global::soundThread = 0;
@@ -64,7 +64,9 @@ void Global::globalInit(QString path)
 }
 
 static void createIconSet(){
-
+    iconSet.insert("normal", new QIcon(QString(":/icons/") + "qipmsg.xpm"));
+    iconSet.insert("receive",
+                   new QIcon(QString(":/icons/") + "qipmsg_recv.xpm"));
 }
 
 
